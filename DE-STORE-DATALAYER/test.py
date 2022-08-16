@@ -107,3 +107,21 @@ response = requests.post(
     headers = {"Content-Type": "application/json"}
     )
 print(response.json())
+
+response = requests.put(
+    BASE + "DealAPI",
+    data = '{"Article":1,"Store":0,"DealType":"1","Name":"Buy One Get One Free","From":"20220816","To":"0"}',
+    headers = {"Content-Type": "application/json"}
+    )
+
+response = requests.put(
+    BASE + "DealAPI",
+    data = '{"Article":2,"Store":0,"DealType":"1","Name":"10 percent discount","From":"20220816","To":"0"}',
+    headers = {"Content-Type": "application/json"}
+    )
+
+response = requests.put(
+    BASE + "DealAPI",
+    data = '{"Article":0,"Store":0,"DealType":"2","Name":"10 percent STAFF discount","From":"20220816","To":"0"}',
+    headers = {"Content-Type": "application/json"}
+    )

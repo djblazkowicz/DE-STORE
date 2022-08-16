@@ -19,10 +19,10 @@ namespace DE_BusinessLayer
         public IEnumerable<User> UserList;
         public IEnumerable<Article> ArticleList;
 
-        public IEnumerable<Deal> DealList;
+
         public IEnumerable<StockTransfer> StockTransferList;
 
-
+        public List<Deal> DealList;
         public List<PurchaseOrder> PurchaseOrderList;
         public PurchaseOrder CurrentPurchaseOrder;
 
@@ -217,7 +217,7 @@ namespace DE_BusinessLayer
             HttpResponseMessage response = client.GetAsync(urlParameters).Result;
             if (response.IsSuccessStatusCode)
             {
-                DealList = response.Content.ReadAsAsync<IEnumerable<Deal>>().Result;
+                DealList = response.Content.ReadAsAsync<List<Deal>>().Result;
             }
         }
     }

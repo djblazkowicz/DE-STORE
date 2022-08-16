@@ -71,8 +71,9 @@ class DealModel(db.Model):
     Article = db.Column(db.Integer, nullable=False)
     Store = db.Column(db.Integer, nullable=True)
     DealType = db.Column(db.Integer, nullable=False)
-    From = db.Column(db.DateTime, nullable=False)
-    To = db.Column(db.DateTime, nullable=True)
+    Name = db.Column(db.String(200), nullable=False)
+    From = db.Column(db.String(100), nullable=False)
+    To = db.Column(db.String(100), nullable=True)
 
 class StockTransferModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -142,12 +143,13 @@ purchaseorder_put_args.add_argument("Date", type=str, help="purchaseorder date",
 purchaseorder_put_args.add_argument("User", type=int, help="assoc user", required=True)
 
 deal_put_args = reqparse.RequestParser()
-deal_put_args.add_argument("id", type=int, help="Deal id number", required=True)
+#deal_put_args.add_argument("id", type=int, help="Deal id number", required=True)
 deal_put_args.add_argument("Article", type=int, help="Article id number", required=True)
 deal_put_args.add_argument("Store", type=int, help="Store id number", required=True)
 deal_put_args.add_argument("DealType", type=int, help="Deal type number", required=True)
-deal_put_args.add_argument("From", type=datetime, help="deal start date", required=True)
-deal_put_args.add_argument("To", type=datetime, help="deal end date", required=True)
+deal_put_args.add_argument("Name", type=str, help="Deal type number", required=True)
+deal_put_args.add_argument("From", type=str, help="deal start date", required=True)
+deal_put_args.add_argument("To", type=str, help="deal end date", required=True)
 
 stocktransfer_put_args = reqparse.RequestParser()
 stocktransfer_put_args.add_argument("id", type=int, help="id number", required=True)
@@ -203,8 +205,8 @@ deal_patch_args = reqparse.RequestParser()
 deal_patch_args.add_argument("Article", type=int, help="Article id number")
 deal_patch_args.add_argument("Store", type=int, help="Store id number")
 deal_patch_args.add_argument("DealType", type=int, help="Deal type number")
-deal_patch_args.add_argument("From", type=datetime, help="deal start date")
-deal_patch_args.add_argument("To", type=datetime, help="deal end date")
+deal_patch_args.add_argument("From", type=str, help="deal start date")
+deal_patch_args.add_argument("To", type=str, help="deal end date")
 
 stocktransfer_patch_args = reqparse.RequestParser()
 stocktransfer_patch_args.add_argument("StoreFrom", type=int, help="Store id number")
@@ -271,8 +273,9 @@ deal_resource_fields = {
     'Article' : fields.Integer,
     'Store' : fields.Integer,
     'DealType' : fields.Integer,
-    'From' : fields.DateTime,
-    'To' : fields.DateTime
+    'Name' : fields.String,
+    'From' : fields.String,
+    'To' : fields.String
 }
 
 stocktransfer_resource_fields = {
@@ -523,6 +526,29 @@ class PurchaseOrderAPI(Resource):
         db.session.commit()
         return PO, 201
 
+#PURCHASE ORDER API
+class DealAPI(Resource):
+    #CREATE
+    @marshal_with(deal_resource_fields)
+    def put(self):
+        args = deal_put_args.parse_args()
+        result = DealModel.query.order_by(DealModel.id).all()
+        Id = len(result) + 1
+
+        PO = DealModel(
+            id = Id,
+            Article = args['Article'],
+            Store = args['Store'],
+            DealType = args['DealType'],
+            Name = args['Name'],
+            From = args['From'],
+            To = args['To']
+        )
+
+        db.session.add(PO)
+        db.session.commit()
+        return PO, 201
+
 
 #WAREHOUSE RESTOCK API
 class StockTransferAPI(Resource):
@@ -605,6 +631,17 @@ class GetPurchaseOrder(Resource):
             result = [result]
             return result
 
+class GetDeal(Resource):
+    @marshal_with(deal_resource_fields)
+    def get(self, deal_id):
+        if deal_id == 0:
+            result = DealModel.query.order_by(DealModel.id).all()
+            return result
+        else:
+            result = DealModel.query.get(deal_id)
+            result = [result]
+            return result
+
 #SQLITE API
 class SQLiteAPI(Resource):
     def post(self):
@@ -626,6 +663,7 @@ api.add_resource(GetUser, "/GetUser/<int:user_id>")
 api.add_resource(GetArticle, "/GetArticle/<int:article_id>")
 api.add_resource(GetItem, "/GetItem/<int:item_id>")
 api.add_resource(GetPurchaseOrder, "/GetPurchaseOrder/<int:item_id>")
+api.add_resource(GetDeal, "/GetDeal/<int:deal_id>")
 
 #OTHER ENDPOINTS
 api.add_resource(StoreAPI, "/StoreAPI")
@@ -635,6 +673,7 @@ api.add_resource(ItemAPI, "/ItemAPI")
 api.add_resource(StockTransferAPI, "/StockTransferAPI")
 api.add_resource(BasketAPI, "/BasketAPI")
 api.add_resource(PurchaseOrderAPI, "/PurchaseOrderAPI")
+api.add_resource(DealAPI, "/DealAPI")
 
 api.add_resource(SQLiteAPI, "/SQLiteAPI")
 

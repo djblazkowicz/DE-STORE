@@ -34,6 +34,7 @@ namespace DE_PresentationLayer
             businessLayer.GetStoreList();
             businessLayer.GetUserList();
             businessLayer.GetArticleList();
+            businessLayer.GetDealList(0);
 
             ListBoxArticles.ItemsSource = businessLayer.ArticleList;
             ListBoxArticles.DisplayMemberPath = "Name";

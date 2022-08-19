@@ -72,13 +72,13 @@ response = requests.put(
 
 response = requests.put(
     BASE + "ArticleAPI",
-    data = '{"id":1,"Name":"Bread","Description":"tasty","Price":2,"Points":1,"Active":1}',
+    data = '{"id":1,"Name":"E-Bike","Description":"Enjoy the road with less pain!","Price":2,"Points":1,"Active":1}',
     headers = {"Content-Type": "application/json"}
     )
 
 response = requests.put(
     BASE + "ArticleAPI",
-    data = '{"id":2,"Name":"Beer","Description":"beer=good!","Price":5,"Points":1,"Active":1}',
+    data = '{"id":2,"Name":"Laptop","Description":"12th gen Intel Core i7, 16GB Ram, 240gb SSD","Price":5,"Points":1,"Active":1}',
     headers = {"Content-Type": "application/json"}
     )
 

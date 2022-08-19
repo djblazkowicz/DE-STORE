@@ -195,5 +195,30 @@ namespace DE_PresentationLayer
         {
             ButtonPurchaseBasket_Action();
         }
+
+        private void ButtonAddArticle_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonEditArticle_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonUpdateUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonTransferStock_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBoxFinance_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

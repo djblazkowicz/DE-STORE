@@ -23,10 +23,10 @@
         <Button x:Name="ButtonAddToBasket" Content="Add to Basket" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17" Click="ButtonAddToBasket_Click"/>
         <Button x:Name="ButtonClearBasket" Content="Clear Basket" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17" Click="ButtonClearBasket_Click"/>
         <Button x:Name="ButtonAssignDeal" Content="Assign Deal" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17"/>
-        <Button x:Name="ButtonAddArticle" Content="Add Article" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17"/>
-        <Button x:Name="ButtonTransferStock" Content="Transfer Stock" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17"/>
+        <Button x:Name="ButtonAddArticle" Content="Add Article" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17" Click="ButtonAddArticle_Click"/>
+        <Button x:Name="ButtonTransferStock" Content="Transfer Stock" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17" Click="ButtonTransferStock_Click"/>
         <Button x:Name="ButtonPurchase" Content="Purchase" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17" Click="ButtonPurchase_Click"/>
-        <CheckBox x:Name="CheckBoxFinance" Content="Buy Now Pay Later" HorizontalAlignment="Left" Margin="10,224,0,0" VerticalAlignment="Top" FontSize="10" Height="15" Width="102"/>
+        <CheckBox x:Name="CheckBoxFinance" Content="Buy Now Pay Later" HorizontalAlignment="Left" Margin="10,224,0,0" VerticalAlignment="Top" FontSize="10" Height="15" Width="102" Checked="CheckBoxFinance_Checked"/>
         <ListBox x:Name="ListBoxBasket" Height="217" Margin="117,68,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="170" VirtualizingStackPanel.IsVirtualizing="False" SelectionChanged="ListBoxBasket_SelectionChanged"/>
         <Label x:Name="LabelBasket" Content="Your Basket" HorizontalAlignment="Left" Margin="117,45,0,0" VerticalAlignment="Top" FontSize="10" Height="23" Width="61"/>
         <ListBox x:Name="ListBoxArticles" Height="217" Margin="489,68,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="195">
@@ -34,8 +34,8 @@
         <Label x:Name="LabelStoreInventory" Content="Store Inventory" HorizontalAlignment="Left" Margin="292,48,0,0" VerticalAlignment="Top" FontSize="10" Height="23" Width="77"/>
         <Label x:Name="LabelArticles" Content="Articles" Margin="489,48,600,0" VerticalAlignment="Top" RenderTransformOrigin="-1.658,-2.603" FontSize="10" Height="23"/>
         <ListBox x:Name="ListBoxStoreItems" HorizontalAlignment="Left" Height="217" Margin="292,68,0,0" VerticalAlignment="Top" Width="192" SelectionChanged="ListBoxStoreItems_SelectionChanged"/>
-        <Button x:Name="ButtonEditArticle" Content="Edit Article" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17"/>
-        <Button x:Name="ButtonUpdateUser" Content="Update User" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17"/>
+        <Button x:Name="ButtonEditArticle" Content="Edit Article" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17" Click="ButtonEditArticle_Click"/>
+        <Button x:Name="ButtonUpdateUser" Content="Update User" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="75" FontSize="10" Height="17" Click="ButtonUpdateUser_Click"/>
         <Label x:Name="LableImpersonateUser" Content="Impersonate User" HorizontalAlignment="Left" Margin="90,7,0,0" VerticalAlignment="Top" FontSize="10" Height="23" Width="88"/>
         <Label x:Name="LabelSelectStore" Content="Select Store" HorizontalAlignment="Left" Margin="215,7,0,0" VerticalAlignment="Top" FontSize="10" Height="23" Width="62"/>
         <Label x:Name="LabelLoyaltyPoints" Content="Loyalty Points: " HorizontalAlignment="Left" Margin="340,21,0,0" VerticalAlignment="Top" FontSize="10"/>
